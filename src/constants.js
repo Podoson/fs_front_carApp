@@ -1,0 +1,1 @@
+export const SERVER_URL = 'https://fs-back-carapp-herk.herokuapp.com/';
