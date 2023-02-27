@@ -39,7 +39,7 @@ function CarList(){
     const fetchCars = () => {
         const token = sessionStorage.getItem("jwt");
 
-        fetch(`${SERVER_URL}api/cars`, {headers: {'Authorization' : token, 'Access-Control-Allow-Origin': 'https://fs-back-carapp-herk.herokuapp.com/'}})
+        fetch(`${SERVER_URL}api/cars`, {headers: {'Authorization' : token, 'Access-Control-Allow-Origin': '*'}})
         .then(response => response.json())
         .then(data => setCars(data._embedded.cars))
         .catch(err => console.error(err));
@@ -52,7 +52,7 @@ function CarList(){
     const onDelClick = (url) => {
         const token = sessionStorage.getItem("jwt");
         if(window.confirm("Are you sure to delete?")){
-            fetch(url, {method: 'DELETE', headers: {'Authorization' : token, 'Access-Control-Allow-Origin': 'https://fs-back-carapp-herk.herokuapp.com/'}})
+            fetch(url, {method: 'DELETE', headers: {'Authorization' : token, 'Access-Control-Allow-Origin': '*'}})
             .then(response => {
                 if(response.ok){
                     fetchCars();
@@ -77,7 +77,7 @@ function CarList(){
                 headers: {
                     'Content-Type':'application/json',
                     'Authorization' : token,
-                    'Access-Control-Allow-Origin': 'https://fs-back-carapp-herk.herokuapp.com/'
+                    'Access-Control-Allow-Origin': '*'
                 },
                 body: JSON.stringify(car)
             }
@@ -96,7 +96,7 @@ function CarList(){
     const updateCar = (car, link) => {
         const token = sessionStorage.getItem("jwt");
 
-        fetch(link, {method: 'PUT', headers: {'Content-Type': 'application/json', 'Authorization' : token, 'Access-Control-Allow-Origin': 'https://fs-back-carapp-herk.herokuapp.com/'}, body: JSON.stringify(car)})
+        fetch(link, {method: 'PUT', headers: {'Content-Type': 'application/json', 'Authorization' : token, 'Access-Control-Allow-Origin': '*'}, body: JSON.stringify(car)})
         .then(response => {
             if(response.ok){
                 fetchCars();
