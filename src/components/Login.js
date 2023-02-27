@@ -21,7 +21,7 @@ function Login(){
     const login = () => {
         fetch(`${SERVER_URL}login`, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
+            headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': 'https://fs-back-carapp-herk.herokuapp.com/'},
             body: JSON.stringify(user)
         })
         .then(res => {
